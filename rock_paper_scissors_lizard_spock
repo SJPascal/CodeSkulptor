@@ -1,10 +1,13 @@
 ### this is a game created by a noob at programming, it was based off the Big Bang Theory show!!! the language is in python ###
 
-## this converts name into a number##
+import random
+
+### this converts name into a number###
+
 def name_to_number(name):
     if name == "rock":
         return 0
-    elif name == "spock":
+    elif name == "Spock":
         return 1
     elif name == "paper":
         return 2
@@ -16,11 +19,12 @@ def name_to_number(name):
         print
         
 ### this converts number to name###
+
 def number_to_name(number):
     if number == 0:
         return "rock"
     elif number == 1:
-        return "spock"
+        return "Spock"
     elif number == 2:
         return "paper"
     elif number == 3:
@@ -31,18 +35,42 @@ def number_to_name(number):
         print
 
 ### this converts players choice to corresponding number###
+
 def rpsls(player_choice):
     print
-    print "player chooses", player_choice
+    print "Player chooses", player_choice + "!"
     player_number = name_to_number(player_choice)
-    return
-### this converts computers random number choice with name###
-import random
-def computer_number():
-    comp_number = random.randrange(0,5)
-    return comp_number
-def comp_choice(comp_number):
-    computer_choice = number_to_name(comp_number)
-    return computer_choice
     
-print "computer chooses", computer_number()
+### this converts computers random number choice with name###
+    comp_number = random.randrange(0,5)
+    computer_choice = number_to_name(comp_number)
+    print "Computer chooses", computer_choice + "!"
+### this computes the difference of both players number with modulo 5###
+    difference = (comp_number - player_number) % 5
+### this determines who the winner is###
+    if difference == 0:
+        return "There Is A Tie!!"
+    elif difference == 1:
+        return "Computer Wins!!"
+    elif difference == 2:
+        return "Computer Wins!!"
+    elif difference == 3:
+        return "Player Wins!!!"
+    elif difference == 4: 
+        return "Player Wins!!!"
+    
+
+    
+### now play the game!!!###
+### print what player chooses ###
+print rpsls("rock")
+print rpsls("Spock")
+print rpsls("paper")
+print rpsls("lizard")
+print rpsls("scissors")
+
+
+
+
+
+http://www.codeskulptor.org/#user40_UP82XMsD3HnsMvI_2.py
