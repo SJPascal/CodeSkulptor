@@ -15,19 +15,18 @@ def new_game():
     global secret_number
     secret_number = random.randrange(0, 100)
     
-
-
 # define event handlers for control panel
+
 def range100():
     # button that changes the range to [0,100) and starts a new game 
-    
-    # remove this when you add your code    
-    pass
-
+    global high_number
+    high_number = 100
+	new_game()
 def range1000():
     # button that changes the range to [0,1000) and starts a new game     
-    
-    pass
+    global high_number
+    high_number = 1000
+    new_game()
     
 def input_guess(guess):
     # main game logic goes here	
