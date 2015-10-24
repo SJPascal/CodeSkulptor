@@ -13,7 +13,7 @@ low_number = 0
 def new_game():
     
     global secret_number
-    secret_number = random.randrange(0, 100)
+    secret_number = random.randrange(0, high_number)
     
 # define event handlers for control panel
 
@@ -21,7 +21,7 @@ def range100():
     # button that changes the range to [0,100) and starts a new game 
     global high_number
     high_number = 100
-	new_game()
+    new_game()
 def range1000():
     # button that changes the range to [0,1000) and starts a new game     
     global high_number
