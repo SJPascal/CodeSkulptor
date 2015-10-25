@@ -22,10 +22,8 @@ def new_game():
         guesses_left = 7
     elif high_number == 1000:
         guesses_left = 10
-    else :
-        
-        
-    
+    else : 
+        print
     print ""
     print "A new game has started. The range is 0 to " + str(high_number) + "!"
     print "Number of remaining guesses " + str(guesses_left) + "!"    
@@ -52,11 +50,25 @@ def restart():
 def input_guess(user_guess):
     # main game logic goes here	
     global secret_number, guesses_left
-    
+    guesses_left = guesses_left - 1
         
     print ""
     print "Guess was " +  str(user_guess) + "!"
     print "Number of remaining guesses " + str(guesses_left) + "!" 
+    
+    
+   
+    if (int(user_guess) == secret_number):  
+        print "Correct! You win!"
+        new_game()
+    elif (int(user_guess) > secret_number):
+        print "Lower!"
+    elif (int(user_guess) < secret_number):
+        print "Higher!"
+    else :
+        print ""
+
+    
     
     if guesses_left == 0:
         print "You have ran out of guesses! The correct number was " + str(secret_number) + "!"
@@ -64,17 +76,8 @@ def input_guess(user_guess):
         return
 
         
-    guesses_left = guesses_left - 1
     
-    
-    if (int(user_guess) > secret_number):
-        print "Lower!"
-    elif (int(user_guess) < secret_number):
-        print "Higher!"
-    else :
-        print "Correct! You win!"
-        new_game()
-        
+
 
         
 # create frame
