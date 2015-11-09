@@ -14,10 +14,11 @@ HALF_PAD_HEIGHT = PAD_HEIGHT / 2
 LEFT = False
 RIGHT = True
 
-# initialize ball_pos and ball_vel for new bal in middle of table
+# initialize ball_pos and ball_vel for new ball in middle of table
 ball_pos = [WIDTH / 2,  HEIGHT / 2]
 ball_vel = [0,1]
-
+paddle1_pos =(PAD_WIDTH - WIDTH)
+paddle2_pos =(WIDTH - PAD_WIDTH)
 
 
 # if direction is RIGHT, the ball's velocity is upper right, else upper left
@@ -57,8 +58,9 @@ def draw(canvas):
     if ball_pos[1] - BALL_RADIUS <= 0 or ball_pos[1] + BALL_RADIUS >= HEIGHT:
         ball_vel[1] = -ball_vel[1]
     
-    if ball_pos > (WIDTH - pad_width) or ball_pos < (pad_width - WIDTH):
-        spawn_ball = 
+    
+        
+        
     # draw ball
     canvas.draw_circle(ball_pos, BALL_RADIUS, 3, 'WHITE', 'white')
     # update paddle's vertical position, keep paddle on the screen
