@@ -6,7 +6,7 @@ import random
 # initialize globals - pos and vel encode vertical info for paddles
 WIDTH = 600
 HEIGHT = 400       
-BALL_RADIUS = 20
+BALL_RADIUS = 10
 PAD_WIDTH = 8
 PAD_HEIGHT = 80
 HALF_PAD_WIDTH = PAD_WIDTH / 2
@@ -18,7 +18,11 @@ RIGHT = True
 ball_pos = [WIDTH / 2,  HEIGHT / 2]
 ball_vel = [0,1]
 
+RIGHT_SIDE = WIDTH - PAD_WIDTH - BALL_RADIUS
+LEFT_SIDE = PAD_WIDTH + BALL_RADIUS
 
+paddle1_pos =   HALF_PAD_HEIGHT
+paddle2_pos = HALF_PAD_HEIGHT + WIDTH
 # if direction is RIGHT, the ball's velocity is upper right, else upper left
 def spawn_ball(direction):
     global ball_pos, ball_vel # these are vectors stored as lists
@@ -43,7 +47,7 @@ def new_game():
     
     
 def draw(canvas):
-    global score1, score2, paddle1_pos, paddle2_pos, ball_pos, ball_vel, BALL_RADIUS
+    global RIGHT_SIDE, LEFT_SIDE, score1, score2, paddle1_pos, paddle2_pos, ball_pos, ball_vel, BALL_RADIUS
     
         
     # draw mid line and gutters
@@ -52,21 +56,20 @@ def draw(canvas):
     canvas.draw_line([WIDTH - PAD_WIDTH, 0],[WIDTH - PAD_WIDTH, HEIGHT], 1, "White")
         
     # update ball
-    ball_pos [0] += ball_vel[0]
-    ball_pos [1] += ball_vel[1]
+    ball_pos[0] += ball_vel[0]
+    ball_pos[1] += ball_vel[1]
     
     if ball_pos[1] - BALL_RADIUS <= 0 or ball_pos[1] + BALL_RADIUS >= HEIGHT:
         ball_vel[1] = -ball_vel[1]
-    
-    
         
         
     # draw ball
-    canvas.draw_circle(ball_pos, BALL_RADIUS, .05, 'WHITE', 'white')
+    canvas.draw_circle(ball_pos, BALL_RADIUS, 3, 'WHITE', 'white')
+    
     # update paddle's vertical position, keep paddle on the screen
-    pad_pos = HEIGHT / 2
-    pad_pos2 = WIDTH + (HEIGHT / 2)
+
     # draw paddles
+    canvas.draw_line([HALF_PAD_WIDTH, paddle1_pos + HALF_PAD_HEIGHT], [HALF_PAD_WIDTH, paddle1_pos - HALF_PAD_HEIGHT], PAD_WIDTH, "Red")
     
     # determine whether paddle and ball collide    
     
