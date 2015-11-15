@@ -77,7 +77,7 @@ def draw(canvas):
         
     # draw ball
     canvas.draw_circle(ball_pos, BALL_RADIUS, 3, 'purple', 'white')
-    
+    canvas.draw_circle([WIDTH/2,HEIGHT/2], 50, 3, 'White')
     # update paddle's vertical position, keep paddle on the screen
     if paddle1_pos > HEIGHT - HALF_PAD_HEIGHT:
         paddle1_pos = HEIGHT - HALF_PAD_HEIGHT
@@ -94,12 +94,12 @@ def draw(canvas):
     # determine whether paddle and ball collide    
    
     if ball_pos[0] - BALL_RADIUS <= PAD_WIDTH: 
-        ball_vel[0] -= ball_vel[0] + 1
+        ball_vel[0] = ball_vel[0] + 1
         if PAD_WIDTH + (paddle1_pos + HALF_PAD_HEIGHT) <= ball_pos[1] >= PAD_WIDTH + (paddle1_pos - HALF_PAD_HEIGHT):
             score2 += 1
             spawn_ball(RIGHT)
     elif ball_pos[0] - BALL_RADIUS <= PAD_WIDTH:
-        ball_vel[0] = -ball_vel[0]
+        ball_vel[0] -= ball_vel[0] +1
             
         
     if ball_pos[0] + BALL_RADIUS >= WIDTH - PAD_WIDTH:
@@ -107,8 +107,8 @@ def draw(canvas):
         if paddle2_pos + HALF_PAD_HEIGHT <= ball_pos[1] >= paddle2_pos - HALF_PAD_HEIGHT:
             score1 += 1
             spawn_ball(LEFT)
-    elif ball_pos[0] + BALL_RADIUS >= WIDTH + PAD_WIDTH:
-        ball_vel[0] = -ball_vel[0]
+    elif ball_pos[0] + BALL_RADIUS >= WIDTH - PAD_WIDTH:
+        ball_vel[0] -= ball_vel[0] + 1
     # draw scores
     canvas.draw_text("Player 1:" + str(score1), [150,50], 30,"RED")
     canvas.draw_text("Player 2:" + str(score2), [350,50], 30,"BLUE")
